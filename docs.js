@@ -1,4 +1,4 @@
-var showDocuments = function(data) {
+var showLoadedDocuments = function(data) {
   var documents = data.d;
   for (var i in documents) {
     if (documents.hasOwnProperty(i)) {
@@ -13,7 +13,7 @@ var showDocuments = function(data) {
 }
 
 var initPage = function() {
-  $.getJSON('./server/documents.php', showDocuments);
+  $.getJSON('./server/documents.php', showLoadedDocuments);
 }
 
 $(document).ready(initPage);
