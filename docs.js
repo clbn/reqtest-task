@@ -1,19 +1,24 @@
 var showLoadedDocuments = function(data) {
+  $('#doc-list').removeClass('loading');
   var documents = data.d;
   for (var i in documents) {
     if (documents.hasOwnProperty(i)) {
       var d = documents[i];
       var url = './download.html?AttachmentId=' + encodeURIComponent(d.AttachmentId) + '&FileName=' + encodeURIComponent(d.FileName);
       var item = $(document.createElement('div'))
-        .addClass('item')
-        .html('#' + d.AttachmentId + ' &mdash; <a href="' + url + '">' + d.FileName + '</a><br/>(' + d.FileSize + ', ' + d.DateAdded + ')');
+        .addClass('doc-item')
+        .html('<span class="doc-id">#' + d.AttachmentId + '</span> <a href="' + url + '">' + d.FileName + '</a><br/><span class="doc-date">' + d.DateAdded + '</span><span class="doc-size">' + d.FileSize + '</span>');
       $('#doc-list').append(item);
     }
   }
 }
 
 var initPage = function() {
-  $.getJSON('./server/documents.php', showLoadedDocuments);
+  $('#doc-list').addClass('loading');
+  // setTimeout() here is for testing on slow connections only and should be removed in production
+  setTimeout(function() {
+    $.getJSON('./server/documents.php', showLoadedDocuments);
+  }, 2000);
 }
 
 $(document).ready(initPage);
