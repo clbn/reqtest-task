@@ -1,3 +1,12 @@
+var getFileTypeByName = function(fileName) {
+  if (fileName.match(/\.docx?$/)) { return 'word'; }
+  if (fileName.match(/\.xlsx?$/)) { return 'excel'; }
+  if (fileName.match(/\.pdf$/)) { return 'pdf'; }
+  if (fileName.match(/\.txt$/)) { return 'text'; }
+  if (fileName.match(/\.(png|gif|jpe?g)$/)) { return 'image'; }
+  return 'default';
+}
+
 var showLoadedDocuments = function(data) {
   var docList = $('#doc-list');
   docList.removeClass('loading');
@@ -5,6 +14,7 @@ var showLoadedDocuments = function(data) {
     var url = './download.html?AttachmentId=' + encodeURIComponent(doc.AttachmentId) + '&FileName=' + encodeURIComponent(doc.FileName);
     var docItem = $(document.createElement('li'))
       .addClass('doc-item')
+      .addClass('type-' + getFileTypeByName(doc.FileName))
       .html(
         '<span class="doc-id">#' + doc.AttachmentId + '</span> ' +
         '<a class="doc-name" href="' + url + '">' + doc.FileName + '</a> ' +

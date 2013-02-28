@@ -48,7 +48,7 @@ button:hover {
   padding: 0;
 }
 #doc-list.loading {
-  background: #fff url('./loading.gif') left top no-repeat;
+  background: #fff url('./images/loading.gif') left top no-repeat;
   height: 2em;
 }
 #doc-list.error {
@@ -61,9 +61,30 @@ button:hover {
   float: left;
   width: 48%;
   background-color: #dfa;
+  background-position: .5em .5em;
+  background-repeat: no-repeat;
   padding: .5em .7em;
   margin: 0 2% 1em 0;
   overflow: hidden;
+}
+
+#doc-list  .doc-item.type-word {
+  background-image: url('./images/document-word.png');
+}
+#doc-list  .doc-item.type-excel {
+  background-image: url('./images/document-excel.png');
+}
+#doc-list  .doc-item.type-pdf {
+  background-image: url('./images/document-pdf.png');
+}
+#doc-list  .doc-item.type-image {
+  background-image: url('./images/document-image.png');
+}
+#doc-list  .doc-item.type-text {
+  background-image: url('./images/document-text.png');
+}
+#doc-list  .doc-item.type-default {
+  background-image: url('./images/document.png');
 }
 
 #doc-list .doc-item .doc-id,
@@ -78,13 +99,16 @@ button:hover {
 }
 #doc-list .doc-item .doc-name {
   float: left;
+  margin-left: 18px;
 }
 #doc-list .doc-item .doc-date {
   clear: left;
   float: left;
+  color: #777;
   margin-top: .4em;
 }
 #doc-list .doc-item .doc-size {
   float: right;
+  color: #444;
   margin-top: .4em;
 }
