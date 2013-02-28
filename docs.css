@@ -24,6 +24,13 @@ a {
   color: #17b;
 }
 
+header {
+  width: 49em;
+  padding-bottom: 1em;
+  border-bottom: 3em solid #b1be19;
+  margin-bottom: 2em;
+}
+
 h1 {
   color: #333;
   font-size: 1.6em;
@@ -32,11 +39,14 @@ h1 {
 }
 
 button {
+  display: block;
   cursor: pointer;
   color: #444;
   padding: .5em;
   border: 1px solid #ddd;
   background-color: #eee;
+  height: 3em;
+  margin-bottom: 7em;
 }
 button:hover {
   background-color: #dfa;
@@ -46,10 +56,11 @@ button:hover {
   width: 50em;
   overflow: hidden;
   padding: 0;
+  margin: 0;
 }
 #doc-list.loading {
   background: #fff url('./images/loading.gif') left top no-repeat;
-  height: 2em;
+  height: 10em;
 }
 #doc-list.error {
   background-color: #fdd;
@@ -111,4 +122,15 @@ button:hover {
   float: right;
   color: #444;
   margin-top: .4em;
+}
+
+footer {
+  width: 58.82em;
+  color: #999;
+  font-size: .85em;
+  padding: 1em 0;
+}
+
+footer a {
+  color: #666;
 }
