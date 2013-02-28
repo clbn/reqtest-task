@@ -1,0 +1,5 @@
+#doc-list .item {
+  float: left;
+  width: 50%;
+  margin-bottom: 1em;
+}
