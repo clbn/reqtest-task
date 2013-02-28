@@ -7,22 +7,26 @@ var getFileTypeByName = function(fileName) {
   return 'default';
 }
 
+var getDocItem = function(file) {
+  var url = './download.html?AttachmentId=' + encodeURIComponent(file.AttachmentId) + '&FileName=' + encodeURIComponent(file.FileName);
+  return $(document.createElement('li'))
+    .addClass('doc-item')
+    .addClass('type-' + getFileTypeByName(file.FileName))
+    .html(
+      '<a href="' + url + '">' +
+        '<span class="doc-id">#' + file.AttachmentId + '</span> ' +
+        '<span class="doc-name">' + file.FileName + '</span> ' +
+        '<span class="doc-date">' + file.DateAdded + '</span> ' +
+        '<span class="doc-size">' + file.FileSize + '</span>' +
+        '</a>'
+    );
+}
+
 var showLoadedDocuments = function(data) {
   var docList = $('#doc-list');
   docList.removeClass('loading');
-  $.each(data, function(i, doc) {
-    var url = './download.html?AttachmentId=' + encodeURIComponent(doc.AttachmentId) + '&FileName=' + encodeURIComponent(doc.FileName);
-    var docItem = $(document.createElement('li'))
-      .addClass('doc-item')
-      .addClass('type-' + getFileTypeByName(doc.FileName))
-      .html(
-        '<a href="' + url + '">' +
-        '<span class="doc-id">#' + doc.AttachmentId + '</span> ' +
-        '<span class="doc-name">' + doc.FileName + '</span> ' +
-        '<span class="doc-date">' + doc.DateAdded + '</span> ' +
-        '<span class="doc-size">' + doc.FileSize + '</span>' +
-        '</a>'
-      );
+  $.each(data, function(i, file) {
+    var docItem = getDocItem(file);
     docList.append(docItem);
   });
 }
