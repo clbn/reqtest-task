@@ -57,6 +57,7 @@ button:hover {
 }
 
 #doc-list .doc-item {
+  cursor: pointer;
   float: left;
   width: 48%;
   background-color: #dfa;

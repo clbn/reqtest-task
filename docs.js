@@ -37,4 +37,8 @@ var loadDocuments = function() {
 
 $(document).ready(function() {
   $('button').on('click', loadDocuments);
+
+  $(document).on('click', '.doc-item', function() {
+    location.href = $(this).find('a').attr('href');
+  });
 });
