@@ -16,10 +16,12 @@ var showLoadedDocuments = function(data) {
       .addClass('doc-item')
       .addClass('type-' + getFileTypeByName(doc.FileName))
       .html(
+        '<a href="' + url + '">' +
         '<span class="doc-id">#' + doc.AttachmentId + '</span> ' +
-        '<a class="doc-name" href="' + url + '">' + doc.FileName + '</a> ' +
+        '<span class="doc-name">' + doc.FileName + '</span> ' +
         '<span class="doc-date">' + doc.DateAdded + '</span> ' +
-        '<span class="doc-size">' + doc.FileSize + '</span>'
+        '<span class="doc-size">' + doc.FileSize + '</span>' +
+        '</a>'
       );
     docList.append(docItem);
   });
@@ -47,8 +49,4 @@ var loadDocuments = function() {
 
 $(document).ready(function() {
   $('button').on('click', loadDocuments);
-
-  $(document).on('click', '.doc-item', function() {
-    location.href = $(this).find('a').attr('href');
-  });
 });

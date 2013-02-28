@@ -68,14 +68,18 @@ button:hover {
 }
 
 #doc-list .doc-item {
-  cursor: pointer;
   float: left;
   width: 48%;
+  list-style-type: none;
   background-color: #dfa;
   background-position: .5em .5em;
   background-repeat: no-repeat;
-  padding: .5em .7em;
   margin: 0 2% 1em 0;
+}
+
+#doc-list .doc-item a {
+  display: block;
+  padding: .5em .7em;
   overflow: hidden;
 }
 
@@ -111,6 +115,7 @@ button:hover {
 #doc-list .doc-item .doc-name {
   float: left;
   margin-left: 18px;
+  text-decoration: underline;
 }
 #doc-list .doc-item .doc-date {
   clear: left;
