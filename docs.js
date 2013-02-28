@@ -5,9 +5,14 @@ var showLoadedDocuments = function(data) {
     if (documents.hasOwnProperty(i)) {
       var d = documents[i];
       var url = './download.html?AttachmentId=' + encodeURIComponent(d.AttachmentId) + '&FileName=' + encodeURIComponent(d.FileName);
-      var item = $(document.createElement('div'))
+      var item = $(document.createElement('li'))
         .addClass('doc-item')
-        .html('<span class="doc-id">#' + d.AttachmentId + '</span> <a href="' + url + '">' + d.FileName + '</a><br/><span class="doc-date">' + d.DateAdded + '</span><span class="doc-size">' + d.FileSize + '</span>');
+        .html(
+          '<span class="doc-id">#' + d.AttachmentId + '</span> ' +
+          '<a class="doc-name" href="' + url + '">' + d.FileName + '</a> ' +
+          '<span class="doc-date">' + d.DateAdded + '</span> ' +
+          '<span class="doc-size">' + d.FileSize + '</span>'
+        );
       $('#doc-list').append(item);
     }
   }

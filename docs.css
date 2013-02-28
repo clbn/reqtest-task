@@ -31,6 +31,7 @@ h1 {
 #doc-list {
   width: 50em;
   overflow: hidden;
+  padding: 0;
 }
 #doc-list.loading {
   background: #fff url('./loading.gif') left top no-repeat;
@@ -53,9 +54,14 @@ h1 {
 }
 
 #doc-list .doc-item .doc-id {
+  float: right;
   color: #999;
 }
+#doc-list .doc-item .doc-name {
+  float: left;
+}
 #doc-list .doc-item .doc-date {
+  clear: left;
   float: left;
   margin-top: .4em;
 }
