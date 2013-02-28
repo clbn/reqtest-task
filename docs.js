@@ -22,7 +22,8 @@ var showErrorMessage = function(jqXHR, textStatus, errorThrown) {
     .html('Can\'t load documents: ' + jqXHR.status + ' ' + errorThrown);
 }
 
-var initPage = function() {
+var loadDocuments = function() {
+  $('button').remove();
   $('#doc-list').addClass('loading');
   // setTimeout() here is for testing slow connections only and should be removed in production
   setTimeout(function() {
@@ -34,4 +35,6 @@ var initPage = function() {
   }, 2000);
 }
 
-$(document).ready(initPage);
+$(document).ready(function() {
+  $('button').on('click', loadDocuments);
+});
