@@ -15,11 +15,22 @@ var showLoadedDocuments = function(data) {
   });
 }
 
+var showErrorMessage = function(jqXHR, textStatus, errorThrown) {
+  $('#doc-list')
+    .removeClass('loading')
+    .addClass('error')
+    .html('Can\'t load documents: ' + jqXHR.status + ' ' + errorThrown);
+}
+
 var initPage = function() {
   $('#doc-list').addClass('loading');
-  // setTimeout() here is for testing on slow connections only and should be removed in production
+  // setTimeout() here is for testing slow connections only and should be removed in production
   setTimeout(function() {
-    $.getJSON('./server/documents.php', showLoadedDocuments);
+    $.ajax({
+      url: './server/documents.php',
+      dataType: 'json'
+    }).done(showLoadedDocuments)
+      .fail(showErrorMessage);
   }, 2000);
 }
 

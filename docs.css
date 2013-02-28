@@ -37,6 +37,10 @@ h1 {
   background: #fff url('./loading.gif') left top no-repeat;
   height: 2em;
 }
+#doc-list.error {
+  background-color: #fdd;
+  padding: 1em;
+}
 
 #doc-list .doc-item {
   float: left;
