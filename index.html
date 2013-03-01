@@ -5,7 +5,18 @@
   <title>ReQtest task</title>
   <link href="./docs.css" rel="stylesheet" type="text/css"/>
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-  <script type="text/javascript" src="./docs.js"></script>
+  <script type="text/javascript" src="./js/jquery.tmpl.js"></script>
+  <script type="text/javascript" src="./js/docs.js"></script>
+  <script id="doc-item-template" type="text/x-jquery-tmpl">
+    <li class="doc-item type-${getFileTypeByName(FileName)}">
+      <a href="/download.html?AttachmentId=${encodeURIComponent(AttachmentId)}&FileName=${encodeURIComponent(FileName)}">
+        <span class="doc-id">#${AttachmentId}</span>
+        <span class="doc-name">${FileName}</span>
+        <span class="doc-date">${DateAdded}</span>
+        <span class="doc-size">${FileSize}</span>
+      </a>
+    </li>
+  </script>
 </head>
 <body>
   <header><img alt="ReQtest logo" src="./images/logo.png"/></header>
