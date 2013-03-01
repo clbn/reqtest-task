@@ -10,20 +10,22 @@ var getFileTypeByName = function(fileName) {
 
 (function() {
 
+  var docList = null;
+
   var showLoadedDocuments = function(data) {
-    $('#doc-list').removeClass('loading');
+    docList.removeClass('loading');
     $('#doc-item-template').tmpl(data).appendTo('#doc-list');
   }
 
   var showErrorMessage = function(jqXHR, textStatus, errorThrown) {
-    $('#doc-list').removeClass('loading')
+    docList.removeClass('loading')
       .addClass('error')
       .html('Can\'t load documents: ' + jqXHR.status + ' ' + errorThrown);
   }
 
   var loadDocuments = function() {
     $('button').remove();
-    $('#doc-list').addClass('loading');
+    docList.addClass('loading');
     $.ajax({
       url: './server/documents.php',
       dataType: 'json'
@@ -32,6 +34,7 @@ var getFileTypeByName = function(fileName) {
   }
 
   $(document).ready(function() {
+    docList = $('#doc-list');
     $('button').on('click', loadDocuments);
   });
 
