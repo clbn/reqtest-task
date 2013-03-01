@@ -43,14 +43,11 @@
   var loadDocuments = function() {
     $('button').remove();
     $('#doc-list').addClass('loading');
-    // setTimeout() here is for testing slow connections only and should be removed in production
-    setTimeout(function() {
-      $.ajax({
-        url: './server/documents.php',
-        dataType: 'json'
-      }).done(showLoadedDocuments)
-        .fail(showErrorMessage);
-    }, 2000);
+    $.ajax({
+      url: './server/documents.php',
+      dataType: 'json'
+    }).done(showLoadedDocuments)
+      .fail(showErrorMessage);
   }
 
   $(document).ready(function() {

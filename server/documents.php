@@ -1,5 +1,8 @@
 <?php
 
+// sleep() here is for testing slow connections only and should be removed in production
+sleep(2);
+
 header('Content-Type: application/json;charset=utf-8');
 
 print <<<QWERTYUIOP
